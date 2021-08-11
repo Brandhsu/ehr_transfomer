@@ -11,5 +11,12 @@
             "program": "lstm\\model.py",
             "console": "integratedTerminal"
         },
+        {
+            "name": "transformer",
+            "type": "python",
+            "request": "launch",
+            "program": "transformer\\model.py",
+            "console": "integratedTerminal"
+        },
     ]
 }
