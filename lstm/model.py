@@ -3,7 +3,9 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-#df = pd.read_csv('/data/raw/ehr-transformer/csvs/aggregated-00.csv')
+aggregated_df = pd.read_csv('/data/raw/ehr-transformer/csvs/aggregated-00.csv')
+#aggregated_df = pd.read_csv('aggregated-00.csv')
+
 past = 1
 step = 1
 future = 1
@@ -41,7 +43,7 @@ label_columns = {
 }
 num_features = len(label_columns)
 
-aggregated_df = pd.read_csv('aggregated-00.csv')
+
 patients = aggregated_df['patient_id'].unique()
 num_patients = len(patients)
 data = []
