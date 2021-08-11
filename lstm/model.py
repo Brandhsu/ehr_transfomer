@@ -58,7 +58,6 @@ for p in patients:
         for i in range(sequence_length, np_data.shape[0]):
             data.append(np_data[i-sequence_length:i])
             label.append(np_data[i])
-   
 
 data, label = np.array(data), np.array(label)
 print(data.shape, label.shape)
