@@ -72,4 +72,4 @@ lstm_model = tf.keras.models.Sequential([
 ])
 
 lstm_model.compile(optimizer = 'adam', loss = 'mean_squared_error')
-lstm_model.fit(data, label, epochs=45, batch_size=4)
+lstm_model.fit(data, label, epochs=45, batch_size=4, validation_freq=1)
