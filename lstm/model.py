@@ -3,8 +3,8 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-aggregated_df = pd.read_csv('/data/raw/ehr-transformer/csvs/aggregated-00.csv')
-#aggregated_df = pd.read_csv('aggregated-00.csv')
+# aggregated_df = pd.read_csv('/data/raw/ehr-transformer/csvs/aggregated-00.csv')
+aggregated_df = pd.read_csv('aggregated-00.csv')
 
 past = 1
 step = 1
@@ -54,7 +54,7 @@ for p in patients:
     patient_df = patient_df.sort_values(by='time_elapsed_in_min')
     patient_data_df = patient_df[label_columns]
     patient_data_df = patient_data_df.replace(np.nan, -1)  
-    #print(patient_data_df.head())
+    # print(patient_df.head())
     np_data = patient_data_df.to_numpy()
     if np_data.shape[0] != sequence_length+1:
         for i in range(sequence_length, np_data.shape[0]):
@@ -65,6 +65,7 @@ data, label = np.array(data), np.array(label)
 print(data.shape, label.shape)
 
 lstm_model = tf.keras.models.Sequential([
+    tf.keras.layers.MultiHeadAttention(2, key_dim=32),
     # Shape [batch, time, features] => [batch, time, lstm_units]
     tf.keras.layers.LSTM(32, return_sequences=True),
     # Shape => [batch, time, features]
